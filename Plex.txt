@@ -1,0 +1,19 @@
+---
+services:
+  plex:
+    image: lscr.io/linuxserver/plex:latest
+    container_name: plex
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=100
+      - TZ=Europe/Lisbon
+      - VERSION=docker
+      - PLEX_CLAIM= claim-TeuapsJnXeoVsxSmK4aC
+    volumes:
+      - /home/priminas5/plex/transcode:/transcode
+      - /home/priminas5/plex/media:/data
+      - /home/priminas5/plex/library:/config
+      - /home/priminas5/plex/tvseries:/tv
+      - /home/priminas5/plex/movies:/movies
+    restart: unless-stopped

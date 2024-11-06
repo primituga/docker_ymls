@@ -1,0 +1,28 @@
+version: "2"
+services:
+    ytdl_material:
+        environment: 
+            ytdl_mongodb_connection_string: 'mongodb://ytdl-mongo-db:27017'
+            ytdl_use_local_db: 'false'
+            write_ytdl_config: 'true'
+        restart: always
+        depends_on:
+            - ytdl-mongo-db
+        volumes:
+            - /home/priminas5/dockerFiles/ytDL/appdata:/app/appdata
+            - /home/priminas5/dockerFiles/ytDL/audio:/app/audio
+            - /home/priminas5/dockerFiles/ytDL/video:/app/video
+            - /home/priminas5/dockerFiles/ytDL/subscriptions:/app/subscriptions
+            - /home/priminas5/dockerFiles/ytDL/users:/app/users
+        ports:
+            - "8998:17442"
+        image: tzahi12345/youtubedl-material:latest
+    ytdl-mongo-db:
+        # If you are using a Raspberry Pi, use mongo:4.4.18
+        image: mongo:4.4.18
+        logging:
+            driver: "none"          
+        container_name: mongo-db
+        restart: always
+        volumes:
+            - /home/priminas5/dockerFiles/ytDL/db/:/data/db

@@ -1,0 +1,24 @@
+version: '2'
+services:
+  db:
+    image: yobasystems/alpine-mariadb:latest
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    restart: always
+    volumes:
+      - /home/priminas5/dockerFiles/nextcloud/nextclouddb:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=8520
+      - MYSQL_PASSWORD=8520
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+  app:
+    image: nextcloud
+    ports:
+      - 8181:80
+    links:
+      - db
+    volumes:
+      - /home/priminas5/dockerFiles/nextcloud/nextcloud:/var/www/html
+    restart: always
+
+#sudo chmod -R 0770 /home/priminas5/dockerFiles/nextcloud/

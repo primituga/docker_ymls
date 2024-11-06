@@ -1,0 +1,13 @@
+services:
+  homeassistant:
+    container_name: homeassistant
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+    volumes:
+      - /home/priminas5/dockerFiles/homeAssistant/config:/config
+      - /home/priminas5/dockerFiles/homeAssistant/dbus:/run/dbus:ro
+      - /etc/localtime:/etc/localtime:ro
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
+
+#docker run -d   --name homeassistant   --privileged   --restart=unless-stopped   -e TZ=MY_TIME_ZONE   -v /home/homeassistant/:/config   -v /run/dbus:/run/dbus:ro   --network=host   ghcr.io/home-assistant/home-assistant:stable
