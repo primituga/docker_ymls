@@ -1,0 +1,28 @@
+services:
+  qbittorrent-nox:
+    container_name: qbittorrent-nox
+    hostname: qbittorrent-nox.local
+    #restart: unless-stopped
+    environment:
+      #- PGID=1000
+      #- PUID=1000
+      - QBT_EULA=accept
+      - QBT_VERSION=latest
+      - QBT_WEBUI_PORT=8080
+      - TZ=Lisbon/Portugal
+    image: qbittorrentofficial/qbittorrent-nox:latest
+    ports:
+      - 6881:6881/tcp
+      - 6881:6881/udp
+      - 8080:8080/tcp
+    read_only: true
+    dns: 
+      - 172.173.174.62
+      - 2001:8a0:f2ff:5300:abcd:1234:5678:9abc
+    stop_grace_period: 30m
+    tmpfs:
+      - /tmp
+    tty: true
+    volumes:
+      - /home/priminas5/dockerFiles/qbittorrent-nox/config:/config
+      - /home/priminas5/Downloads:/downloads

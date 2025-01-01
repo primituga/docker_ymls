@@ -1,0 +1,29 @@
+services:
+  stremio-server:
+    image: stremio/server:latest
+    #image: tsaridas/stremio-docker:latest
+    #network_mode: host
+    ports:
+      - "11470:11470" # http
+      - "12470:12470" # https UNCOMMENT IF NOT USING NGINX
+    environment:
+      - NO_CORS=1
+      - APP_PATH=/app/config
+    volumes:
+      - /home/priminas5/dockerFiles/stremio/config:/app/config
+    restart: unless-stopped
+    dns: 
+      - 172.173.174.62
+      - 2001:8a0:f2ff:5300:abcd:1234:5678:9abc
+
+  ## You can ignore this if you don't need clients with HTTPS support unlike apple devices
+  #nginx:
+  #  image: nginx:latest
+  #  volumes:
+  #    - /home/priminas5/dockerFiles/stremio/nginx:/etc/nginx
+      #- /home/priminas5/dockerFiles/stremio/nginx/certs:/etc/nginx/certs # Map your SSL certificate directory
+  #  ports:
+  #    - "12470:443"
+  #  depends_on:
+  #    - stremio-server
+  #  restart: unless-stopped

@@ -1,0 +1,21 @@
+---
+services:
+  duckdns:
+    image: lscr.io/linuxserver/duckdns:latest
+    container_name: duckdns
+    hostname: duckdns
+    network_mode: host #optional
+    environment:
+      - PUID=1000 #optional
+      - PGID=1000 #optional
+      - TZ=Portugal/Lisbon 
+      - SUBDOMAINS=primisc
+      - TOKEN=679a1a5b-fb38-449c-95b8-bfbdd75c550d
+      - UPDATE_IP=both #optional
+      - LOG_FILE=true #optional
+    volumes:
+      - /home/priminas5/dockerFiles/duckdns/config:/config #optional
+    restart: unless-stopped
+    dns: 
+      - 172.173.174.62
+      - 2001:8a0:f2ff:5300:abcd:1234:5678:9abc

@@ -6,8 +6,17 @@ services:
       - /home/priminas5/dockerFiles/homeAssistant/config:/config
       - /home/priminas5/dockerFiles/homeAssistant/dbus:/run/dbus:ro
       - /etc/localtime:/etc/localtime:ro
+    environment:
+      - GPIO ZERO_PIN_FACTORY=pigpio 
+      - PIGPIO_ADDR=172.173.174.62
     restart: unless-stopped
+    hostname: "homeassistant.local"
     privileged: true
     network_mode: host
+    dns: 
+      - 172.173.174.62
+      - 2001:8a0:f2ff:5300:abcd:1234:5678:9abc
+
+
 
 #docker run -d   --name homeassistant   --privileged   --restart=unless-stopped   -e TZ=MY_TIME_ZONE   -v /home/homeassistant/:/config   -v /run/dbus:/run/dbus:ro   --network=host   ghcr.io/home-assistant/home-assistant:stable

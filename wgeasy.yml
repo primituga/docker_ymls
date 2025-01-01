@@ -1,0 +1,40 @@
+services:
+  wg-easy:
+    container_name: wg-easy
+    image: ghcr.io/wg-easy/wg-easy
+
+    environment:
+      - $2a$12$6FRXwGPDZQ6y4Nxz7YFEB.E11ngPxcinH/PEw5JNaS3m.Iyq3x31e
+      - WG_HOST=primisc.duckdns.org
+      - PORT=44041
+      - WG_PORT=44042
+      - WG_DEFAULT_DNS=10.6.0.1
+      - WG_DEFAULT_ADDRESS=10.6.0.x
+      #- WG_DEFAULT_ADDRESS_V6=fd00:abcd::x
+      - WG_DEVICE=end0
+
+    volumes:
+      - /home/priminas5/dockerFiles/wg/config:/etc/wireguard
+      - /lib/modules:/lib/modules
+      #- /home/priminas5/dockerFiles/wg/lib/modules:/lib/modules
+      #- /home/priminas5/dockerFiles/wg/etc/wireguard:/etc/wireguard
+      #- /home/priminas5/dockerFiles/wg/home:/home
+
+    network_mode: host
+    #ports:
+    #  - "44042:44042/udp"
+    #  - "44041:44041/tcp"
+      
+    dns: 
+      - 172.173.174.62
+      - 2001:8a0:f2ff:5300:abcd:1234:5678:9abc
+
+      
+    restart: unless-stopped
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    #sysctls:
+    #  - net.ipv4.ip_forward=1
+    #  - net.ipv4.conf.all.src_valid_mark=1
+
