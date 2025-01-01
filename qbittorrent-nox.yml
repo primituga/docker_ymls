@@ -17,12 +17,12 @@ services:
       - 8080:8080/tcp
     read_only: true
     dns: 
-      - 172.173.174.62
-      - 2001:8a0:f2ff:5300:abcd:1234:5678:9abc
+      - <ipv4 dns>
+      - <ipv6 dns>
     stop_grace_period: 30m
     tmpfs:
       - /tmp
     tty: true
     volumes:
-      - /home/priminas5/dockerFiles/qbittorrent-nox/config:/config
-      - /home/priminas5/Downloads:/downloads
+      - /home/PI/dockerFiles/qbittorrent-nox/config:/config
+      - /home/PI/Downloads:/downloads

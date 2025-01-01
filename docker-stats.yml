@@ -8,8 +8,8 @@ services:
     environment:
       STATS_UPDATE_INTERVAL: 10
     dns: 
-      - 172.173.174.62
-      - 2001:8a0:f2ff:5300:abcd:1234:5678:9abc
+      - <ipv4 dns>
+      - <ipv6 dns>
 
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro

@@ -4,21 +4,21 @@ services:
     image: ghcr.io/wg-easy/wg-easy
 
     environment:
-      - $2a$12$6FRXwGPDZQ6y4Nxz7YFEB.E11ngPxcinH/PEw5JNaS3m.Iyq3x31e
-      - WG_HOST=primisc.duckdns.org
-      - PORT=44041
-      - WG_PORT=44042
-      - WG_DEFAULT_DNS=10.6.0.1
-      - WG_DEFAULT_ADDRESS=10.6.0.x
-      #- WG_DEFAULT_ADDRESS_V6=fd00:abcd::x
-      - WG_DEVICE=end0
+      - <WG_TOKEN>
+      - WG_HOST=PI.duckdns.org
+      - PORT=12345
+      - WG_PORT=12345
+      - WG_DEFAULT_DNS=y.y.y.1
+      - WG_DEFAULT_ADDRESS=y.y.y.x
+      #- WG_DEFAULT_ADDRESS_V6=y:y::x
+      - WG_DEVICE=eth0
 
     volumes:
-      - /home/priminas5/dockerFiles/wg/config:/etc/wireguard
+      - /home/PI/dockerFiles/wg/config:/etc/wireguard
       - /lib/modules:/lib/modules
-      #- /home/priminas5/dockerFiles/wg/lib/modules:/lib/modules
-      #- /home/priminas5/dockerFiles/wg/etc/wireguard:/etc/wireguard
-      #- /home/priminas5/dockerFiles/wg/home:/home
+      #- /home/PI/dockerFiles/wg/lib/modules:/lib/modules
+      #- /home/PI/dockerFiles/wg/etc/wireguard:/etc/wireguard
+      #- /home/PI/dockerFiles/wg/home:/home
 
     network_mode: host
     #ports:
@@ -26,10 +26,9 @@ services:
     #  - "44041:44041/tcp"
       
     dns: 
-      - 172.173.174.62
-      - 2001:8a0:f2ff:5300:abcd:1234:5678:9abc
+      - <ipv4 dns>
+      - <ipv6 dns>
 
-      
     restart: unless-stopped
     cap_add:
       - NET_ADMIN

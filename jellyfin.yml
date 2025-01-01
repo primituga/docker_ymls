@@ -8,14 +8,14 @@ services:
       - PGID=1000
       - TZ=Lisbon/Portugal
     volumes:
-      - /home/priminas5/dockerFiles/jellyfin/jellyfin-config:/config
-      - /home/priminas5/media:/media
-      - /srv/dev-disk-by-uuid-732d6d18-e81d-4262-96bb-c6ba38e2b2ff/Filmes:/media2
+      - /home/PI/dockerFiles/jellyfin/jellyfin-config:/config
+      - /home/PI/media:/media
+      - /srv/dev-disk-by-uuid-...../Filmes:/media2
     ports:
       - 8096:8096
     restart: unless-stopped
     dns: 
-      - 172.173.174.62
-      - 2001:8a0:f2ff:5300:abcd:1234:5678:9abc
+      - <ipv4 dns>
+      - <ipv6 dns>
 volumes:
   jellyfin-config:

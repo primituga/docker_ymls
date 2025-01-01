@@ -9,19 +9,19 @@ services:
         depends_on:
             - ytdl-mongo-db
         volumes:
-            - /home/priminas5/dockerFiles/ytDL/appdata:/app/appdata
-            - /home/priminas5/media/Musica:/app/audio
-            #- /home/priminas5/media/ytDL/video:/app/video
-            #- /home/priminas5/media/ytDL/audio:/app/audio
-            - /home/priminas5/media/Filmes:/app/video
-            - /home/priminas5/media/ytDL/subscriptions:/app/subscriptions
-            - /home/priminas5/dockerFiles/ytDL/users:/app/users
+            - /home/PI/dockerFiles/ytDL/appdata:/app/appdata
+            - /home/PI/media/Musica:/app/audio
+            #- /home/PI/media/ytDL/video:/app/video
+            #- /home/PI/media/ytDL/audio:/app/audio
+            - /home/PI/media/Filmes:/app/video
+            - /home/PI/media/ytDL/subscriptions:/app/subscriptions
+            - /home/PI/dockerFiles/ytDL/users:/app/users
         ports:
             - "8998:17442"
         image: tzahi12345/youtubedl-material:latest
         dns: 
-            - 172.173.174.62
-            - 2001:8a0:f2ff:5300:abcd:1234:5678:9abc
+      	    - <ipv4 dns>
+      	    - <ipv6 dns>
     ytdl-mongo-db:
         # If you are using a Raspberry Pi, use mongo:4.4.18
         image: mongo:4.4.18
@@ -30,7 +30,7 @@ services:
         container_name: mongo-db
         #restart: always
         volumes:
-            - /home/priminas5/dockerFiles/ytDL/db/:/data/db
+            - /home/PI/dockerFiles/ytDL/db/:/data/db
         dns: 
-            - 172.173.174.62
-            - 2001:8a0:f2ff:5300:abcd:1234:5678:9abc
+      	    - <ipv4 dns>
+            - <ipv6 dns>

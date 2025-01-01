@@ -10,11 +10,11 @@ services:
       - NO_CORS=1
       - APP_PATH=/app/config
     volumes:
-      - /home/priminas5/dockerFiles/stremio/config:/app/config
+      - /home/PI/dockerFiles/stremio/config:/app/config
     restart: unless-stopped
     dns: 
-      - 172.173.174.62
-      - 2001:8a0:f2ff:5300:abcd:1234:5678:9abc
+      - <ipv4 dns>
+      - <ipv6 dns>
 
   ## You can ignore this if you don't need clients with HTTPS support unlike apple devices
   #nginx:

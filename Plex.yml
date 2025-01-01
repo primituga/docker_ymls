@@ -9,11 +9,11 @@ services:
       - PGID=100
       - TZ=Europe/Lisbon
       - VERSION=docker
-      - PLEX_CLAIM= claim-TeuapsJnXeoVsxSmK4aC
+      - PLEX_CLAIM= claim-.....
     volumes:
-      - /home/priminas5/plex/transcode:/transcode
-      - /home/priminas5/plex/media:/data
-      - /home/priminas5/plex/library:/config
-      - /home/priminas5/plex/tvseries:/tv
-      - /home/priminas5/plex/movies:/movies
+      - /home/PI/plex/transcode:/transcode
+      - /home/PI/plex/media:/data
+      - /home/PI/plex/library:/config
+      - /home/PI/plex/tvseries:/tv
+      - /home/PI/plex/movies:/movies
     restart: unless-stopped

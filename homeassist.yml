@@ -3,19 +3,19 @@ services:
     container_name: homeassistant
     image: "ghcr.io/home-assistant/home-assistant:stable"
     volumes:
-      - /home/priminas5/dockerFiles/homeAssistant/config:/config
-      - /home/priminas5/dockerFiles/homeAssistant/dbus:/run/dbus:ro
+      - /home/PI/dockerFiles/homeAssistant/config:/config
+      - /home/PI/dockerFiles/homeAssistant/dbus:/run/dbus:ro
       - /etc/localtime:/etc/localtime:ro
     environment:
       - GPIO ZERO_PIN_FACTORY=pigpio 
-      - PIGPIO_ADDR=172.173.174.62
+      - PIGPIO_ADDR=<GPIO_Addess>
     restart: unless-stopped
     hostname: "homeassistant.local"
     privileged: true
     network_mode: host
     dns: 
-      - 172.173.174.62
-      - 2001:8a0:f2ff:5300:abcd:1234:5678:9abc
+      - <ipv4 dns>
+      - <ipv6 dns>
 
 
 

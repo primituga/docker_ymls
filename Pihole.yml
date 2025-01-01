@@ -13,17 +13,17 @@ services:
     environment:
       TZ: 'Portugal/Lisbon'
       IPv6: 'true'
-      ServerIPv6: '2001:8a0:f2c4:2801:da3a:ddff:feb0:9ebb'
+      ServerIPv6: '<ipv6>'
       # WEBPASSWORD: 'set a secure password here or it will be random'
     # Volumes store your data between container upgrades
     volumes:
-      - '/home/priminas5/dockerFiles/Pihole/etc-pihole:/etc/pihole'
-      - '/home/priminas5/dockerFiles/Pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
+      - '/home/PI/dockerFiles/Pihole/etc-pihole:/etc/pihole'
+      - '/home/PI/dockerFiles/Pihole/etc-dnsmasq.d:/etc/dnsmasq.d'
     #   https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
     dns:
       - 127.0.0.1
-      - 172.173.174.62
-      - 2001:8a0:f2ff:5300:abcd:1234:5678:9abc
+      - <ipv4 dns>
+      - <ipv6 dns>
     cap_add:
       - NET_ADMIN # Required if you are using Pi-hole as your DHCP server, else not needed
     restart: unless-stopped
